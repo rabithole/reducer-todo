@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
 	const [newTodo, setNewToDo] = useState();
-	const [toDos, dispatch] = useReducer(reducer, initialState);
+	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const handleChanges = e => {
 		setNewToDo(e.target.value);
@@ -14,12 +14,13 @@ function App() {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// dispatch('anothersdf');
+		// dispatching an action defined by the type
 		dispatch({ type: 'ADD_TODO', payload: newTodo  });
 		console.log('submit confirm')
+
 	}
 
-	console.log(toDos);
+	console.log(state);
 	return (
 		<div className="App">
 		  <header className="App-header">
@@ -28,7 +29,9 @@ function App() {
 		    	handleChanges={handleChanges}
 		    />
 		 
-		    <h3>{`To Do: ${toDos.item}`}</h3>
+		    {<div>To Do: {state.map(item => (
+		    	<p>{item.item}</p>
+		    ))}</div>}
 		    
 		    
 		  </header>
