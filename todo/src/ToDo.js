@@ -6,7 +6,7 @@ function ToDo(props) {
 	return (
 		<div>
 			 {<div>{props.state.map((item,index) => (
-		    	<p key={index}>{item.item}</p>
+		    	<p key={index} onClick={() => props.toggleItem(props.id, props.completed)}>{item.item}</p>
 		    ))}</div>}
 		</div>
 	)

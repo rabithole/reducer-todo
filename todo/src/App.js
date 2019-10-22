@@ -8,6 +8,21 @@ function App() {
 	const [newTodo, setNewToDo] = useState();
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+	const toggleItem = (itemid) => {
+	    console.log( itemid);
+	    this.setState({
+	      todos: this.state.todos.map(item => {
+	        if (itemid === item.id) {
+	          return {
+	            ...item,
+	            completed: !item.completed
+	          };
+	        }
+	        return item;
+	      })
+	    });
+	};
+
 	const handleChanges = e => {
 		setNewToDo(e.target.value);
 		// console.log(e.target.value)
@@ -33,6 +48,7 @@ function App() {
 		
 			<ToDo 
 				state={state}
+				toggleItem={state.toggleItem}
 			/>    
 		    
 		    
