@@ -9,8 +9,9 @@ function addToDoForm(props) {
 		  	<input 
 		  		type='text'
 		  		name='newTodo'
-		  		placeholder='new to do'
+		  		placeholder={props.clear}
 		  		onChange={props.handleChanges}
+		  		
 		  	/>
 
 		  	<button type='submit'>Add To Do</button>

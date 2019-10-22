@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import { initialState, reducer } from './reducers/reducer';
 import TodoForm from './TodoForm';
+import ToDo from './ToDo';
 import './App.css';
 
 function App() {
@@ -15,23 +16,24 @@ function App() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		// dispatching an action defined by the type
-		dispatch({ type: 'ADD_TODO', payload: newTodo  });
-		console.log('submit confirm')
+		dispatch({ type: 'ADD_TODO', payload: newTodo });
+		console.log(state[0].input);
 
 	}
 
-	console.log(state);
+	// console.log(state);
 	return (
 		<div className="App">
 		  <header className="App-header">
 		    <TodoForm 
 		    	handleSubmit={handleSubmit}
 		    	handleChanges={handleChanges}
+		    	clear={state[0].input}
 		    />
-		 
-		    {<div>To Do: {state.map(item => (
-		    	<p>{item.item}</p>
-		    ))}</div>}
+		
+			<ToDo 
+				state={state}
+			/>    
 		    
 		    
 		  </header>
@@ -40,3 +42,7 @@ function App() {
 }
 
 export default App;
+
+// {<div>{state.map((item,index) => (
+// 		    	<p key={index}>{item.item}</p>
+// 		    ))}</div>}

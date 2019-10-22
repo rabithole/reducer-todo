@@ -1,7 +1,8 @@
 export const initialState = 
 [
   {
-    item: 'Something about reduction',
+    input: 'New To Do',
+    item: "Add To Do's",
     completed: false,
     id: 3892987589
   }
@@ -13,6 +14,7 @@ export function reducer(state, action) {
       return [
         ...state,
           {
+            input: 'New To Do',
             item: action.payload,
             completed: false,
             id: new Date()
