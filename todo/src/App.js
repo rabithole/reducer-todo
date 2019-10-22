@@ -1,27 +1,12 @@
 import React, { useState, useReducer } from 'react';
 import { initialState, reducer } from './reducers/reducer';
-import TodoForm from './TodoForm';
-import ToDo from './ToDo';
+import TodoForm from './components/TodoForm';
+import ToDo from './components/ToDo';
 import './App.css';
 
 function App() {
 	const [newTodo, setNewToDo] = useState();
 	const [state, dispatch] = useReducer(reducer, initialState);
-
-	const toggleItem = (itemid) => {
-	    console.log( itemid);
-	    this.setState({
-	      todos: this.state.todos.map(item => {
-	        if (itemid === item.id) {
-	          return {
-	            ...item,
-	            completed: !item.completed
-	          };
-	        }
-	        return item;
-	      })
-	    });
-	};
 
 	const handleChanges = e => {
 		setNewToDo(e.target.value);
@@ -36,7 +21,7 @@ function App() {
 
 	}
 
-	// console.log(state);
+	console.log(state);
 	return (
 		<div className="App">
 		  <header className="App-header">
@@ -45,13 +30,15 @@ function App() {
 		    	handleChanges={handleChanges}
 		    	clear={state[0].input}
 		    />
-		
-			<ToDo 
-				state={state}
-				toggleItem={state.toggleItem}
-			/>    
-		    
-		    
+			
+			{state.map((item, index) => (
+				<ToDo 
+					todo={state.item}
+					index={index}
+					id={state.id}
+					completed={state.completed}
+				/>   
+			))}
 		  </header>
 		</div>
 	);

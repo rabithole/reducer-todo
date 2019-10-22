@@ -17,7 +17,7 @@ export function reducer(state, action) {
             input: 'New To Do',
             item: action.payload,
             completed: false,
-            id: new Date()
+            id: Date.now()
           },
         ];
     default:

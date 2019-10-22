@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -17,6 +13,18 @@
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.notCompleted {
+  background-color: white;
+  color: black;
+  width: 250px;
+  padding: 5px;
+  border: solid 3px red;
+}
+
+input {
+  padding: 5px;
+}
+
+button {
+  margin-left: 10px;
 }
