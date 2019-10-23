@@ -14,7 +14,7 @@ export function reducer(state, action) {
         ...state,
           {
             todo: action.payload,
-            completed: false,
+            completed: action.payload,
             id: Date.now()
           },
         ];
