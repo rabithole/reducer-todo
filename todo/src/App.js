@@ -17,7 +17,7 @@ function App() {
 		e.preventDefault();
 		// dispatching an action defined by the type
 		dispatch({ type: 'ADD_TODO', payload: newTodo });
-		console.log(state[0].input);
+		// console.log(state[0].input);
 
 	}
 
@@ -28,17 +28,12 @@ function App() {
 		    <TodoForm 
 		    	handleSubmit={handleSubmit}
 		    	handleChanges={handleChanges}
-		    	clear={state[0].input}
+		    	// clear={state[0].input}
 		    />
-			
-			{state.map((item, index) => (
-				<ToDo 
-					todo={state.item}
-					index={index}
-					id={state.id}
-					completed={state.completed}
-				/>   
-			))}
+		    
+			<ToDo 
+				state={state}
+			/>
 		  </header>
 		</div>
 	);

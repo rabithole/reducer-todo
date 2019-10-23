@@ -21,6 +21,12 @@
   border: solid 3px red;
 }
 
+.completed {
+  width: 250px;
+  padding: 5px;
+  border: solid 3px grey;
+}
+
 input {
   padding: 5px;
 }

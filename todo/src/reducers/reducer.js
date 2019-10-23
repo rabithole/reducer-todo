@@ -1,10 +1,9 @@
 export const initialState = 
 [
   {
-    input: 'New To Do',
-    item: "Add To Do's",
+    todo: "Add To Do's",
     completed: false,
-    id: 3892987589
+    id: Date.now()
   }
 ];
 
@@ -14,8 +13,7 @@ export function reducer(state, action) {
       return [
         ...state,
           {
-            input: 'New To Do',
-            item: action.payload,
+            todo: action.payload,
             completed: false,
             id: Date.now()
           },

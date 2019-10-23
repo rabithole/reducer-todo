@@ -1,27 +1,37 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function ToDo(props) {
-	console.log(props);
+	console.log(props.state);
 
 	const [completed, setCompleted] = useState('completed', false);
 
-	const toggleCompleted = () => {
-		// if(props.id === props.id) {
-		// 	setCompleted(!completed);	
-		// }
-		setCompleted(!completed);
+	const toggleCompleted = (clickId) => {
+		props.state.map(item => {
+			// console.log(item.id);
+			// console.log(clickId);
+			if(clickId === item.id) {
+				setCompleted(!completed);
+				console.log(item.id, clickId)
+				
+			} 
+			// else {
+			// 	setCompleted(completed);
+			// }
+		})
+		
 	}
 
 	return (
-		<div>
-			<p 
-				key={props.index}
-				className={completed ? 'completed' : 'notCompleted'}
-				onClick={toggleCompleted}
-			>
-			{props.todo}
-			</p>
+		<div>{props.state.map(item => (
+		    	<p 
+		    		key={item.id} 
+		    		className={completed ? 'completed' : 'notCompleted'}
+		    		onClick={() => toggleCompleted(item.id)}
+		    	>
+		    		{item.todo}
+		    	</p>
+		    ))}
 		</div>
 	)
 		
