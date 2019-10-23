@@ -6,19 +6,21 @@ import './App.css';
 
 function App() {
 	const [newTodo, setNewToDo] = useState();
+	// const [clear, setClear] = useState('');
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const [completed, setCompleted] = useState('completed', false);
+	// const [completed, setCompleted] = useState('completed', false);
 
 	const handleChanges = e => {
 		setNewToDo(e.target.value);
 		// console.log(e.target.value)
+		// setClear('');
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		// dispatching an action defined by the type
 		dispatch({ type: 'ADD_TODO', payload: newTodo });
-		// console.log(state[0].input);
+
 	}
 
 	const toggleCompleted = (clickId) => {
@@ -26,10 +28,11 @@ function App() {
 			// console.log(item.id);
 			// console.log(clickId);
 			if(clickId === item.id) {
-				setCompleted(!completed);
+				// setCompleted(!completed);
 				console.log(item.id, clickId)
-				dispatch({ type: 'ADD_TODO', payload: completed})
+				dispatch({ type: 'TOGGLE_COMPLETED'})
 			} 
+			return 
 		})
 	}
 

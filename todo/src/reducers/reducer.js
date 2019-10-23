@@ -1,10 +1,6 @@
 export const initialState = 
 [
-  {
-    todo: "Add To Do's",
-    completed: false,
-    id: Date.now()
-  }
+  
 ];
 
 export function reducer(state, action) {
@@ -14,10 +10,17 @@ export function reducer(state, action) {
         ...state,
           {
             todo: action.payload,
-            completed: action.payload,
+            completed: false,
             id: Date.now()
           },
         ];
+        case 'TOGGLE_COMPLETED':
+          return [
+            ...state, 
+            {
+              completed: !state.completed,
+            }
+          ]
     default:
       return state;
   }

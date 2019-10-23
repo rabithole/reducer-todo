@@ -2,7 +2,7 @@ import React from 'react';
 
 function addToDoForm(props) {
 	// const [toDos, addToDo] = useReducer(reducer, initialState);
-
+console.log(props.clear);
 	return (
 		<div className="App">
 		  <form onSubmit={props.handleSubmit}>
