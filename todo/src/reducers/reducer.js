@@ -12,7 +12,7 @@ export const initialState =
   // }, 
 ];
 
-export function reducer(state, action) {
+export function reducer(state, action) { // Action === dispatch
   switch (action.type) { // Action is an object
     case 'ADD_TODO':
       return [
@@ -24,7 +24,7 @@ export function reducer(state, action) {
           },
         ];
         case 'TOGGLE_COMPLETED':
-        console.log("action object:", action, 'state:', state)
+        // console.log("action object:", action, 'state:', state)
         return  state.map(item => {
                     if(action.payload === item.id){
                       item.completed = !item.completed
