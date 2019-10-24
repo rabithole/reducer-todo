@@ -6,37 +6,26 @@ import './App.css';
 
 function App() {
 	const [newTodo, setNewToDo] = useState();
-	// const [clear, setClear] = useState('');
 	const [state, dispatch] = useReducer(reducer, initialState);
 	// const [completed, setCompleted] = useState('completed', false);
 
 	const handleChanges = e => {
 		setNewToDo(e.target.value);
-		// console.log(e.target.value)
-		// setClear('');
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		// dispatching an action defined by the type
 		dispatch({ type: 'ADD_TODO', payload: newTodo });
-
 	}
 
 	const toggleCompleted = (clickId) => {
-		state.map(item => {
-			// console.log(item.id);
-			// console.log(clickId);
-			if(clickId === item.id) {
-				// setCompleted(!completed);
-				console.log(item.id, clickId)
-				dispatch({ type: 'TOGGLE_COMPLETED'})
-			} 
-			return 
-		})
+			// Dispathing an action.
+					// Action object below. Type and payload
+		dispatch({ type: 'TOGGLE_COMPLETED', payload: clickId})
+		// console.log(clickId, state)
 	}
 
-	// console.log(state);
 	return (
 		<div className="App">
 		  <header className="App-header">
@@ -48,7 +37,6 @@ function App() {
 			<ToDo 
 				state={state}
 				toggleCompleted={toggleCompleted}
-
 			/>
 		  </header>
 		</div>
@@ -56,7 +44,3 @@ function App() {
 }
 
 export default App;
-
-// {<div>{state.map((item,index) => (
-// 		    	<p key={index}>{item.item}</p>
-// 		    ))}</div>}
