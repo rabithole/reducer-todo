@@ -13,6 +13,7 @@ function addToDoForm(props) {
 		  	/>
 
 		  	<button type='submit'>Add To Do</button>
+		  	<button onClick={props.clear}>Clear Completed</button>
 		  </form>
 		</div>
 	);

@@ -26,12 +26,19 @@ function App() {
 		// console.log(clickId, state)
 	}
 
+	const clearCompleted = e => {
+		// console.log('clear')
+		e.preventDefault();
+		dispatch({ type: 'CLEAR_COMPLETED' })
+	}
+
 	return (
 		<div className="App">
 		  <header className="App-header">
 		    <TodoForm 
 		    	handleSubmit={handleSubmit}
 		    	handleChanges={handleChanges}
+		    	clear={clearCompleted}
 		    />
 
 			<ToDo 
