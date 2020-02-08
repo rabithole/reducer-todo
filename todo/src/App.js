@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import { initialState, reducer } from './reducers/reducer';
 import TodoForm from './components/TodoForm';
 import ToDo from './components/ToDo';
@@ -7,7 +7,12 @@ import './App.css';
 function App() {
 	const [newTodo, setNewToDo] = useState();
 	const [state, dispatch] = useReducer(reducer, initialState);
-	// const [completed, setCompleted] = useState('completed', false);
+
+	// dispatch({type: 'init'});
+
+	useEffect(() => {
+			localStorage.setItem('cart', JSON.stringify(state))
+		}, [state]);
 
 	const handleChanges = e => {
 		setNewToDo(e.target.value);
@@ -17,6 +22,7 @@ function App() {
 		e.preventDefault();
 		// dispatching an action defined by the type
 		dispatch({ type: 'ADD_TODO', payload: newTodo });
+		
 	}
 
 	const toggleCompleted = (clickId) => {

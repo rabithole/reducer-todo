@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function addToDoForm(props) {
+	const [clear, formClear] = useState('');
+
 	return (
 		<div className="App">
-		  <form onSubmit={props.handleSubmit}>
+		  <form onSubmit={props.handleSubmit} onSubmit={formClear}>
 		  	<input 
 		  		type='text'
 		  		name='newTodo'
-		  		// placeholder={props.clear}
+		  		value={clear}
 		  		onChange={props.handleChanges}
 		  		
 		  	/>

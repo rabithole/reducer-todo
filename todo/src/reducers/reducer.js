@@ -1,16 +1,7 @@
+// Sets initial state based on what is in local storage. 
 export const initialState = 
-[
-  // {
-  //   todo: 'a todo',
-  //   completed: false,
-  //   id: 1
-  // }, 
-  // {
-  //   todo: '2 a todo',
-  //   completed: false,
-  //   id: 2
-  // }, 
-];
+  !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart'));
+
 
 export function reducer(state, action) { // Action === dispatch
   switch (action.type) { // Action is an object, it is passed through reducer to dispatch in the App.js file. 
@@ -25,7 +16,7 @@ export function reducer(state, action) { // Action === dispatch
         ];
 
       case 'TOGGLE_COMPLETED':
-      console.log("action object:", action, 'state:', state)
+      // console.log("action object:", action, 'state:', state)
       return  state.map(item => {
                   if(action.payload === item.id){
                     item.completed = !item.completed
